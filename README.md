@@ -1,1 +1,9 @@
 # HW10_JusongCai
+
+In HW10, I created 3 digital filters, MAF, FIR and IIR, to smooth the high frequency noisy data on z acceleration by means of plotting raw data and filtered data on MATLAB. Through the plots, I compared the filters with each other to find out the optimal choice in terms of how much noise is reduced versus how many computations are required.
+
+In order to obtain the data and the plot, program the harmony project similar to HW9 but only collect z acceleration data as well as 3 filters' data. Copy the data through terminal and paste them to MATLAB. Plot them in one figure for comparison. And the results are shown as two pictures and one video in this repo.
+
+Just like HW9, codes in this HW10 include: "ST7735.c/h" LCD communication with PIC32 via SPI; "imc.h" and "imu.c" IMU communication with PIC32 via I2C; "i2c_master_noint.c/h" setup I2C communication; "app.c/h" USB communication with my Mac, which is the major important file required to be edited; "main.c" main function that controls app.
+
+Results & Conclusion: plots are named after "Filter_Comparison1/2.jpg". As shown in the two figures, five-sample is used in MAF; 4th-order and five-sample is used in FIR filter, where the weights are [0, 0.2037, 0.5926, 0.2037, 0]; coefficients used in IIR filter are a = 0.2 and b = 0.8, which means 20% of previous data and 80% of new data; MAF is better for reducing the noise of the raw data, making signal smoother but more delayed; IIR is better for tracking the raw data; IIR is better for computation complexity because it has only O(1) complexity, while MAF and FIR have O(n).
